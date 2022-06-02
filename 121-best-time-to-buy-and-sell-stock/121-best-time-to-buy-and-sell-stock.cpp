@@ -6,10 +6,7 @@ public:
         int sellStock = INT_MIN;
         int res = 0;
         for(auto& p : prices){
-            
-            if(p < buyStock) {
-                buyStock = p;
-            }
+            buyStock =min(buyStock , p);
             sellStock = max(sellStock , p-buyStock);
             
         }
