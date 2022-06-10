@@ -52,7 +52,25 @@ public:
         //return helper(prices , 0 , 1);
         
         // method 3 ----> using memoization
-        vector<vector<int>> dp(n, vector<int> (2, -1)); 
-        return helper2(prices , 0 , 1 , dp);
+       /* vector<vector<int>> dp(n, vector<int> (2, -1)); 
+        return helper2(prices , 0 , 1 , dp); */
+         
+        // method 4 using 4 variable
+        int aheadBuy , aheadNotBuy, curBuy, curNotBuy ;
+        aheadBuy = aheadNotBuy = 0 ;
+        
+        for(int index = n-1 ;  index >= 0 ; index--){
+            
+            curNotBuy = max( prices[index] + aheadBuy
+                          , 0 +  aheadNotBuy);
+            
+            curBuy = max( -prices[index] + aheadNotBuy
+                         , 0 + aheadBuy );
+            
+            aheadBuy =  curBuy;
+            aheadNotBuy =  curNotBuy;
+	    }
+	    return aheadBuy;
+
     }
 };
