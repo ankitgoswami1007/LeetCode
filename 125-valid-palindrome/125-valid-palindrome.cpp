@@ -20,9 +20,9 @@ public:
         }
         return true ; */
         
-        int st = 0 , end = s.size()-1;
+       // int st = 0 , end = s.size()-1;
         
-        while(st < end) {
+       /* while(st < end) {
             
             if( ! isalnum(s[st])) st++;
             else if( ! isalnum(s[end])) end--;
@@ -30,6 +30,15 @@ public:
                if(tolower(s[st++]) != tolower(s[end--])) return false ;
             } 
         }
-        return true ;
+        return true ; */
+        
+         for(int st = 0, end = s.size()-1; st < end ; st++, end--) {
+            
+            while( ! isalnum(s[st]) && st < end) st++;
+            while( ! isalnum(s[end]) && st < end) end--;
+            if(tolower(s[st]) != tolower(s[end])) return false ;
+             
+        }
+        return true ; 
     }
 };
