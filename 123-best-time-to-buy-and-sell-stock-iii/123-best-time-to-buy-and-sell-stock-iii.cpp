@@ -17,6 +17,20 @@ public:
     int maxProfit(vector<int>& prices) {
         int n = prices.size() ;
         vector< vector<vector<int>>> dp( n, vector<vector<int>>(2, vector<int> (3 , -1 ))) ;
-        return helper(prices , 0 , 1 , 2 , dp);
+        //return helper(prices , 0 , 1 , 2 , dp);
+        
+        int buy1 = INT_MAX;
+        int profit1 = INT_MIN;
+        int buy2 = INT_MAX;
+        int profit2 = INT_MIN;
+        
+        for(auto& p : prices){
+            buy1 = min(buy1, p);
+            profit1 = max(profit1 , p-buy1);
+            buy2 = min(buy2, p-profit1);
+            profit2 = max(profit2, p-buy2);
+            
+        }
+        return profit2;
     }
 };
