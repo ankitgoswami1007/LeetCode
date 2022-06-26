@@ -4,16 +4,12 @@ public:
         
         int n = cardPoints.size();
         if(n < k ) return 0;
-        int sum = 0 , i = 0 , j = 0;
-        int finalSum = 0, kSum ;
+        int finalSum = 0, i = 0;
         int r = n-k;
         for(i = r ; i < n ; i++){
-            // if(i < k+1) kSum += cardPoints[i];
-            // sum += cardPoints[i];
             finalSum += cardPoints[i];
         }
         
-        finalSum = sum - kSum;
         cout<<finalSum;
         int total = finalSum;
         int l = 0 ;
