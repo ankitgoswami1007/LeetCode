@@ -22,7 +22,7 @@ public:
         
         if(h == n) return mx ;
         
-        int high = 1000000000;
+        int high = mx;
         int low = 1 ;
         int k = INT_MAX;
         
