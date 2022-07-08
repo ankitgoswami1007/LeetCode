@@ -27,7 +27,7 @@ class Solution {
         return res;
     }
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
+   /* ListNode* mergeKLists(vector<ListNode*>& lists) {
         
     /*    int n = lists.size();
         
@@ -46,7 +46,7 @@ public:
             }
         }
        return lists[0]; */
-        if( lists.size()==0 ) return nullptr;
+      /*  if( lists.size()==0 ) return nullptr;
         
         while(lists.size() > 1){
             
@@ -54,15 +54,15 @@ public:
             lists.erase(lists.begin());
             lists.erase(lists.begin());
         }
-        return lists.front();
-    }
+        return lists.front(); 
+    } */
     
-//     struct compare {
-//     bool operator()(const ListNode* l, const ListNode* r) {
-//         return l->val > r->val;
-//     }
-// };
-/*ListNode *mergeKLists(vector<ListNode *> &lists) { //priority_queue
+    struct compare {
+    bool operator()(const ListNode* l, const ListNode* r) {
+        return l->val > r->val;
+    }
+};
+ListNode *mergeKLists(vector<ListNode *> &lists) { //priority_queue
     priority_queue<ListNode *, vector<ListNode *>, compare> q;
     for(auto l : lists) {
         if(l)  q.push(l);
@@ -80,5 +80,5 @@ public:
         if(tail->next) q.push(tail->next);
     }
     return result; 
-} */
+} 
 }; 
