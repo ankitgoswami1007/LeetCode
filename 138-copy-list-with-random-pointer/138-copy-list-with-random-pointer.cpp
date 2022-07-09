@@ -13,6 +13,7 @@ public:
     }
 };
 */
+// -------------------- approach 1 with extra space
 
 class Solution {
     unordered_map<Node* , Node*> mp;
@@ -52,4 +53,46 @@ public:
         }
         return head2;
     }
-};
+};  
+
+//------------------------- approach 2 
+/*class Solution {
+    
+    Node* duplicate(Node* cur, Node* head){
+        
+        while(cur){
+            
+            Node* temp = cur->next;
+            cur->next = new Node(cur->val);
+            cur->next->next = temp;
+            cur = temp;
+        }
+        cur = head;
+        return cur;
+    }
+    
+public:
+    Node* copyRandomList(Node* head) {
+        
+        Node* cur = head;
+        cur = duplicate(cur, head);
+        
+        while(cur != NULL){
+            if(cur->next){
+                cur->next->random = cur->random != NULL ?cur->random->next: NULL;
+            }
+            cur = cur->next->next;
+        }
+        
+        Node* original = head, *copy = head-> next, *temp = copy;
+        
+        while(original != NULL && copy != NULL){
+            
+            original->next = original->next->next;
+            copy->next = (copy->next != NULL) ? copy->next->next  : copy->next;
+            original = original->next;
+            copy = copy->next;   
+        }
+        return temp;
+    }
+}; */
