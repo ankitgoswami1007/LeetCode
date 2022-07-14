@@ -40,6 +40,15 @@ struct Node
 class Solution
 {
     public:
+    
+    void helper(Node* root,int level, vector<int>& ans){
+        
+        if(root == nullptr) return ;
+        
+        if(level == ans.size()) ans.push_back(root->data);
+        helper(root->right, level+1, ans);
+        helper(root->left, level+1, ans);
+    }
     //Function to return list containing elements of right view of binary tree.
     vector<int> rightView(Node *root)
     {
@@ -47,7 +56,11 @@ class Solution
        vector<int> ans;
        if (!root) return ans;
        
-       queue<Node*> q;
+       helper(root, 0 , ans);
+       return ans;
+       
+       //-------------- queue approach
+      /* queue<Node*> q;
        q.push(root);
        
        while(!q.empty()){
@@ -65,7 +78,8 @@ class Solution
                if(temp->left) q.push(temp->left);
            }
        }
-       return ans;
+       return ans; */
+       
       /* queue<Node*> q;
        q.push(root);
        
