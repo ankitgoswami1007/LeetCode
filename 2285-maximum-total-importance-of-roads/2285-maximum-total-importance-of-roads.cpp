@@ -46,9 +46,9 @@ public:
         }
         sort(degree.begin(),degree.end());
         for(auto i : degree){ 
-            //cout<<i<<" "<<x<<"\n";
+           // cout<<i<<" "<<x<<"\n";
             ans += i * (x++);
-            //cout<<ans<<'\n';
+           // cout<<ans<<'\n';
         }
         return ans;
     }
