@@ -11,6 +11,13 @@
  */
 class Solution {
     int i = 0 , preIndex = 0 , postIndex = 0  ;
+    map<int, int> nodeToIndex;
+    
+    void createMapping(vector<int> postorder, int n) {
+        for(int i = 0 ; i < n ; i++){
+            nodeToIndex[postorder[i]] = i;
+        }
+    }
     
     TreeNode* create( vector<int>& preorder, int ps, int pe, vector<int>& postorder , int pps , int ppe ){
         
@@ -22,8 +29,9 @@ class Solution {
         if(ps == pe) return root ;
     
         
-        int index = pps;
-        while(postorder[index] != preorder[ps+1]) index++;
+        // int index = pps;
+        // while(postorder[index] != preorder[ps+1]) index++;
+        int index = nodeToIndex[preorder[ps+1]];
         
         int tnel = index-pps+1;
         
@@ -42,6 +50,8 @@ public:
         
         
         TreeNode* root ;
+        
+        createMapping(postorder, n);
         
         root = create(preorder, 0, n-1, postorder , 0 , n-1);
         
