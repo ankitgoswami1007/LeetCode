@@ -24,14 +24,14 @@ public:
         
          //---------------2nd approach
         
-        unordered_map<int, int> mp;
+        unordered_set<int> set;
         int n = nums.size() ;
         for(int i = 0 ; i < n ; i++){
             if(nums[i] <= 0) continue;
-            mp[nums[i]] = nums[i];
+            set.insert(nums[i]);
         }
         for(int i = 1 ; i < n+1 ; i++){
-            if(mp.find(i) == mp.end()) return i ;
+            if(set.find(i) == set.end()) return i ;
         }
         return n+1; 
     }
