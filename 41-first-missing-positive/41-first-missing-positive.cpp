@@ -11,7 +11,7 @@ public:
         
         //---------------2nd approach
         
-        set<int> set;
+       /* set<int> set;
         int n = nums.size() ;
         for(int i = 0 ; i < n ; i++){
             if(nums[i] <= 0) continue;
@@ -19,6 +19,19 @@ public:
         }
         for(int i = 1 ; i < n+1 ; i++){
             if(set.find(i) == set.end()) return i ;
+        }
+        return n+1;  */
+        
+         //---------------2nd approach
+        
+        unordered_map<int, int> mp;
+        int n = nums.size() ;
+        for(int i = 0 ; i < n ; i++){
+            if(nums[i] <= 0) continue;
+            mp[nums[i]] = nums[i];
+        }
+        for(int i = 1 ; i < n+1 ; i++){
+            if(mp.find(i) == mp.end()) return i ;
         }
         return n+1; 
     }
