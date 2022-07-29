@@ -45,10 +45,11 @@ public:
             curNode.isBST = false;
             curNode.maxSum = max(left.maxSum , right.maxSum );
         }
-        
+        //  ans => maxSize
         if(curNode.isBST){
             ans = max(ans, curNode.size);
         }
+        
         sum = max(sum, curNode.maxSum);
         return curNode;
     }
