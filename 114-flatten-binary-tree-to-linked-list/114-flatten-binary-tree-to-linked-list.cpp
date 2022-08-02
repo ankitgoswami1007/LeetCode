@@ -25,14 +25,15 @@ public:
                 }
                 pred->right = cur->right;
                 cur->right = cur->left;
+                cur->left = NULL;
             }
             cur = cur->right;
         }
-        cur = root;
-          while(cur != NULL){
-            cur->left = NULL;
-            cur = cur->right;
-        }
+        // cur = root;
+        //   while(cur != NULL){
+        //     cur->left = NULL;
+        //     cur = cur->right;
+        // }
         
     }
 };
