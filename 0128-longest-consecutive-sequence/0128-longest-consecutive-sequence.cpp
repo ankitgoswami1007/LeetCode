@@ -28,6 +28,9 @@ public:
                 }
             }
         }
+        for(int i = 0 ; i < max_len ; i++){
+            cout<<(max_start_point+i)<<" ";
+        }
         return max_len;
     }
 };
