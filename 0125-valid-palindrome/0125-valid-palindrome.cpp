@@ -22,14 +22,14 @@ public:
         
        
         
-         for(int st = 0, end = s.size()-1; st < end ; st++, end--) {
-            
-            while( ! isalnum(s[st]) && st < end) st++;
-            while( ! isalnum(s[end]) && st < end) end--;
-            if(tolower(s[st]) != tolower(s[end])) return false ;
-             
+          for(int st = 0, end = s.size()-1; st < end ; st++, end--) {
+            // Traverse the string from both sides to keep track of start and end indices
+            while( ! isalnum(s[st]) && st < end) st++; // Skip non-alphanumeric characters from start
+            while( ! isalnum(s[end]) && st < end) end--; // Skip non-alphanumeric characters from end
+            // Compare the characters at start and end indices
+            if(tolower(s[st]) != tolower(s[end])) return false ; // If not equal, return false 
         }
-        return true ; 
+        return true ; // Else, return true 
     }
 };
 
