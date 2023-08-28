@@ -1,23 +1,20 @@
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
+        vector<int> res;
         
-        vector<int> ans;
-        int n = nums.size();
-
-        unordered_set<int> ust;
-        for(int i = 1 ; i <= n ; i++){
-            ust.insert(i);
+        for( int i=0; i < nums.size(); i++)
+        {
+            int n = abs(nums[i]); 
+            if(nums[n-1] > 0)
+                nums[n-1] = -nums[n-1]; // marking -ve
         }
-
-        for(auto& ele : nums){
-            if(ust.find(ele) != ust.end()){
-                ust.erase(ele);
-            }
+        
+        for( int i=0; i < nums.size(); i++)
+        {
+            if(nums[i]>0)
+                res.push_back(i+1);
         }
-        for(auto ele : ust) {
-            ans.push_back(ele);
-        } 
-        return ans;
+        return res;
     }
 };
