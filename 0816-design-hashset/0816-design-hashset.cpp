@@ -1,20 +1,33 @@
 class MyHashSet {
-    vector<int> hashSet;
+    vector<list<int>> hashSet;
+    int siz;
 public:
     MyHashSet() {
-        hashSet.resize(1000001, 0);
+        siz = 100;
+        hashSet.resize(siz);
     }
-    
+    int hash(int key) {
+        return key%siz;
+    }
+    list<int> :: iterator search(int key){
+        int i = hash(key);
+        return find(hashSet[i].begin(), hashSet[i].end(), key);
+    }
     void add(int key) {
-        if(!contains(key)) hashSet[key] = 1;
+        if(contains(key)) return;
+        int i = hash(key);
+        hashSet[i].push_back(key);
     }
     
     void remove(int key) {
-        if(contains(key)) hashSet[key] = 0;
+        if(!contains(key)) return;
+         int i = hash(key);
+         hashSet[i].erase(search(key));
     }
     
     bool contains(int key) {
-        return hashSet[key] == 1; 
+        int i = hash(key);
+        return search(key) != hashSet[i].end();
     }
 };
 
