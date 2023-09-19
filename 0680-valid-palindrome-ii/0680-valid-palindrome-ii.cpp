@@ -24,7 +24,7 @@ public:
                 c2++;
             }
         }
-        if(c1 == 0 || c2 == 0) return true;
+        if(c1 == 0 && c2 == 0) return true;
         if(c1 == 1 || c2 == 1) return true;
         return false;
     }
