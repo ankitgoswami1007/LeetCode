@@ -5,7 +5,9 @@ public:
         int j = s.size()-1;
 
         while(i < j) {
-            swap(s[i], s[j]);
+            char ch = s[i];
+             s[i] = s[j];
+             s[j] = ch;
             i++; j--;
         }
     }
